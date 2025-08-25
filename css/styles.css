@@ -188,3 +188,58 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+.rows {
+  background-color: #0087F7;
+  display: grid;
+  padding-left: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.rows span {
+  padding: 20px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 2ch;
+  display: grid;
+  align-items: left;
+}
+
+.table {
+  margin: 10px;
+  display: grid; /* Habilita el contexto de cuadrícula */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 3 columnas de igual tamaño */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+.table:nth-child(odd){
+  background-color: rgb(247, 246, 246);
+}
+
+.item {
+  display: grid;
+  place-items: left;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 1.8ch;
+  text-align: left;
+}
+
+.tableImg {
+  padding: 5px;
+  width: 180px;
+}
+
+.header {
+  padding: 20px;
+  color: lightskyblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 3ch;
+  display: grid;
+  justify-content: left;
+  align-items: center;
+}
