@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (email && password) {
       localStorage.setItem("inicioSesion", "true");
+      localStorage.setItem("emailUsuario", email);
       window.location.href = "index.html";
 
     } else {

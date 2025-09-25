@@ -40,3 +40,20 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  /* Migro lo de index.html para acá, así a cualquier página que entre lo patea a login si no inició sesión */
+    const sesionIniciada = localStorage.getItem('inicioSesion');
+    if (sesionIniciada !== 'true') {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    const emailUsuario = localStorage.getItem('emailUsuario');
+    const elementoUsuario = document.getElementById('correo-usuario');
+    if (emailUsuario && elementoUsuario) {
+        elementoUsuario.textContent = emailUsuario;
+    }
+});

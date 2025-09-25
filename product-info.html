@@ -31,17 +31,94 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" id="correo-usuario"></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+    <div id="product-info">C</div>
+
+    <script>
+      
+      document.addEventListener("DOMContentLoaded", () => {
+        
+        const productID = localStorage.getItem("selectedProductId")
+        
+        if (productID) {
+          getJSONData(PRODUCT_INFO_URL + productID + ".json").then(function(response) {
+            if (response.status === "ok") {
+              const productData = response.data;
+              
+              if (productData) {
+                const container = document.getElementById("product-info");
+                container.innerHTML = `
+                <div class="col containerGrid">
+                <div class="row-sm-2">
+                  <div class="square row-sm-3">
+                    <img class="imgExpanded" src="${productData.images[0]}" alt="${productData.name}">
+                    </div>
+                    <div class="square row-sm-3">
+                      <img class="imgExpanded" src="${productData.images[3]}" alt="${productData.name}">
+                      </div>
+                      <div class="square row-sm-3">
+                        <img class="imgExpanded" src="${productData.images[2]}" alt="${productData.name}">
+                        </div>
+                        </div>
+                        <div class="expandedView col-sm-2">
+                          <img class="imgExpanded" src="${productData.images[1]}" alt="${productData.name}">
+                          </div>
+                          <div class="infoImg col-sm-2"> 
+                            <h1>${productData.name}</h1>
+                            <h4 style="color: grey;">${productData.category}</h4>
+                            <p>${productData.description}</p>
+                            </br>
+                            </br>
+                            <div class="precioImgView">
+                    <p style="font-size:25px"><strong>${productData.currency} ${productData.cost}</strong></p>
+                    </br>
+                    </br>
+                    <p><strong>Vendidos:</strong> ${productData.soldCount}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="containerCarrusel">
+                <div class="containerRelacionados" id="relacionados"></div>
+              </div>
+              
+              `;
+            console.log(productID);
+          } else {
+            document.getElementById("product-info").innerHTML = "<p>No se encontró el producto</p>";
+          }
+          }
+
+          const relacionados = document.getElementById("relacionados");
+
+        for (let i = 0; i < localStorage.length; i++ ) {
+          const key = localStorage.key(i);
+          if (key.startsWith("id_")) {
+            const prod = JSON.parse(localStorage.getItem(key));
+            if (prod.id != productID) {
+              const item = document.createElement("div");
+              item.classList.add("relacionados");
+
+              item.innerHTML = `
+                <img class="imgRelacionadosDOM" src="${prod.image}" alt="${prod.name}">
+              `;
+
+              relacionados.appendChild(item);
+            }
+            
+            console.log(key);
+          }
+        }
+        })
+        };
+
+      })
+    </script>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -65,3 +142,4 @@
 </body>
 
 </html>
+

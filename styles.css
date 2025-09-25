@@ -336,3 +336,97 @@ a.custom-card:hover {
   height: auto;
   background-color: aliceblue;
 }
+
+/* Estilo del filtro de seleccion por precio */
+
+section#filtros {
+    padding: 15px;
+    background-color: #F7F6F6;
+}
+
+/* Filtro por precio, estilo entrega 3*/
+
+.busqueda input,
+.orden select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.busqueda button {
+  padding: 10px 20px;
+  background: #0077cc;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.busqueda button:hover {
+  background: #005fa3;
+}
+
+/* Funcion de ordenamiento, estilo de botones - entrega 3*/
+
+.orden {
+  display: flex;        
+  gap: 5px; 
+  flex-wrap: wrap;
+}
+
+.mayor, .menor, .relevancia {
+  color: white;
+  background-color: #0087F7;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mayor:hover, .menor:hover, .relevancia:hover {
+  background-color: #006ac2;
+}
+
+/* filtros a la izquierda, orden a la derecha*/
+
+.filtros-contenedor {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    align-items: baseline;
+}
+
+.busqueda,
+.orden {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* En pantallas chicas se apilan */
+@media (max-width: 600px) {
+  .filtros-contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .busqueda,
+  .orden {
+    flex-wrap: wrap;
+  }
+
+  .busqueda input,
+  .orden select,
+  .busqueda button {
+    width: 100%;
+  }
+}

@@ -59,3 +59,65 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+/* Funciones para los filtros, entrega 3*/
+
+/* Buscador por nombre y descripcion, entrega 3*/
+
+  document.getElementById("searchInput").addEventListener("input", function() {
+                let buscar = this.value.toLowerCase();
+
+                let filteredProducts = categoriesArray.products.filter(prod =>
+                    prod.name.toLowerCase().includes(buscar) ||
+                    prod.description.toLowerCase().includes(buscar)
+                );
+
+                showCategoriesList({ products: filteredProducts });
+            });
+
+/* Filtro de precio, entrega 3*/
+
+function filtrarPorPrecio() {
+    let min = document.getElementById("precio-min").value;
+    let max = document.getElementById("precio-max").value;
+
+    min = min ? parseInt(min) : null;
+    max = max ? parseInt(max) : null;
+
+    if (min === null && max === null) {
+        showCategoriesList(categoriesArray);
+        return;
+    }
+
+    let filteredProducts = categoriesArray.products.filter(prod => {
+        let precio = prod.cost;
+        return (min === null || precio >= min) && (max === null || precio <= max);
+    });
+
+    showCategoriesList({ products: filteredProducts });
+}
+
+
+function limpiarFiltros() {
+    document.getElementById("precio-min").value = "";
+    document.getElementById("precio-max").value = "";
+
+    showCategoriesList(categoriesArray);
+}
+
+/* Funciones de Ordenamiento, entrega 3*/
+
+document.getElementById("sort-desc").addEventListener("click", () => {
+    categoriesArray.products.sort((a, b) => a.cost - b.cost);
+    showCategoriesList(categoriesArray);
+});
+
+document.getElementById("sort-asc").addEventListener("click", () => {
+    categoriesArray.products.sort((a, b) => b.cost - a.cost);
+    showCategoriesList(categoriesArray);
+});
+
+document.getElementById("sort-relev").addEventListener("click", () => {
+    categoriesArray.products.sort((a, b) => b.soldCount - a.soldCount);
+    showCategoriesList(categoriesArray);
+});

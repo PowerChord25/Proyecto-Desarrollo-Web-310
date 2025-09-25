@@ -10,14 +10,6 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 
-    <!-- Incluyo el script acá nomás porque es cortito - PowerChord25-->
-  <script>
-    const sesionIniciada = localStorage.getItem('inicioSesion');    /* Revisa con DOM si tiene la inición sesiada*/
-    if (sesionIniciada !== 'true') {                                /* En caso que no la tenga, lo manda al login */
-      window.location.href = 'login.html';                          /* No es necesario el else porque ya está en el inicio */
-    }
-  </script>
-
 </head>
 
 <body>
@@ -39,6 +31,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <span class="nav-link" id="correo-usuario"></span>
           </li>
         </ul>
       </div>
