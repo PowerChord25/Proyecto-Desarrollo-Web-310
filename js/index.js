@@ -11,4 +11,10 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    
+
+    if(localStorage.getItem("username")){
+        document.getElementById("usuario").textContent = localStorage.getItem("username");
+    }
 });

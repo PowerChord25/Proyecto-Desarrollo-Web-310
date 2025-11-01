@@ -6,7 +6,6 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-const LIST_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -41,19 +40,42 @@ let getJSONData = function(url){
     });
 }
 
+function applyThemePreference() {
+  const darkModeEnabled = localStorage.getItem('darkMode') === 'true'
+  const themeSwitch = document.getElementById('themeSwitch')
+  if (darkModeEnabled) {
+    document.body.classList.add('dark-mode')
+    themeSwitch.checked = true 
+  } else {
+    document.body.classList.remove('dark-mode')
+    themeSwitch.checked = false 
+  }
+}
 
-document.addEventListener("DOMContentLoaded", function() {
 
-  /* Migro lo de index.html para acá, así a cualquier página que entre lo patea a login si no inició sesión */
-    const sesionIniciada = localStorage.getItem('inicioSesion');
-    if (sesionIniciada !== 'true') {
-        window.location.href = 'login.html';
-        return;
+function toggleTheme() {
+  const isDarkMode = document.body.classList.toggle('dark-mode')
+  localStorage.setItem('darkMode', isDarkMode) 
+}
+
+function setupThemeSwitch() {
+  const themeSwitch = document.getElementById('themeSwitch')
+  themeSwitch.addEventListener('change', toggleTheme)
+}
+
+
+
+document.addEventListener("DOMContentLoaded" , function(event){
+if(localStorage.getItem("username")){
+        document.getElementById("usuario").textContent = localStorage.getItem("username");
     }
-    
-    const emailUsuario = localStorage.getItem('emailUsuario');
-    const elementoUsuario = document.getElementById('correo-usuario');
-    if (emailUsuario && elementoUsuario) {
-        elementoUsuario.textContent = emailUsuario;
-    }
-});
+
+if (!localStorage.getItem("username")){
+      alert("Para visitar nuestra página primero debe iniciar sesión.")
+      window.location = "login.html"
+    } 
+
+    applyThemePreference();
+    setupThemeSwitch();
+
+})

@@ -1,145 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="products.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="my-profile.html" id="usuario"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <br /><br /><br />
+      <div class="container">
+        <div class="row border rounded border-2">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <button
+              class="btn btn-sm btn-light text-dark m-3"
+              onclick="window.location.href='products.html'"
+            >
+              ← Volver al listado
+            </button>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="correo-usuario"></a>
-          </li>
-        </ul>
+            <button class="btn btn-light m-3">Añadir favoritos ❤</button>
+          </div>
+          <div class="col-6 p-5" id="imagen-producto"></div>
+          <div class="col-6" id="info-producto"></div>
+
+          <div id="calificaciones">
+            <h3>Añade tu comentario:</h3>
+
+            <div class="mb-3">
+              <label>Tu calificación:</label>
+              <div id="stars">
+                <i class="fas fa-star star" onclick="rate(1)"></i>
+                <i class="fas fa-star star" onclick="rate(2)"></i>
+                <i class="fas fa-star star" onclick="rate(3)"></i>
+                <i class="fas fa-star star" onclick="rate(4)"></i>
+                <i class="fas fa-star star" onclick="rate(5)"></i>
+              </div>
+              <small>Selecciona tu calificación</small>
+            </div>
+
+            <div
+              class="form-control d-flex flex-column gap-3"
+              id="form-calificacion"
+            >
+              <textarea
+                id="commentText"
+                placeholder="Escribe tu comentario..."
+                rows="3"
+                style="width: 60%; margin-top: 5px"
+              ></textarea>
+              <button class="col-2" onclick="addComment()">
+                Enviar Comentario
+              </button>
+            </div>
+            <br /><br /><br />
+            <h3>Opiniones destacadas:</h3>
+            <div id="lista-calificaciones" style="margin-top: 20px"></div>
+            <div id="commentsList"></div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <h3 style="display: flex; justify-content: center">
+        Productos relacionados
+      </h3>
+      <br />
+
+      <div
+        id="relatedProducts"
+        class="carousel-inner containter d-flex justify-content-center"
+      ></div>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+        </p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-  </nav>
-  <main>
-    <div id="product-info">C</div>
-
-    <script>
-      
-      document.addEventListener("DOMContentLoaded", () => {
-        
-        const productID = localStorage.getItem("selectedProductId")
-        
-        if (productID) {
-          getJSONData(PRODUCT_INFO_URL + productID + ".json").then(function(response) {
-            if (response.status === "ok") {
-              const productData = response.data;
-              
-              if (productData) {
-                const container = document.getElementById("product-info");
-                container.innerHTML = `
-                <div class="col containerGrid">
-                <div class="row-sm-2">
-                  <div class="square row-sm-3">
-                    <img class="imgExpanded" src="${productData.images[0]}" alt="${productData.name}">
-                    </div>
-                    <div class="square row-sm-3">
-                      <img class="imgExpanded" src="${productData.images[3]}" alt="${productData.name}">
-                      </div>
-                      <div class="square row-sm-3">
-                        <img class="imgExpanded" src="${productData.images[2]}" alt="${productData.name}">
-                        </div>
-                        </div>
-                        <div class="expandedView col-sm-2">
-                          <img class="imgExpanded" src="${productData.images[1]}" alt="${productData.name}">
-                          </div>
-                          <div class="infoImg col-sm-2"> 
-                            <h1>${productData.name}</h1>
-                            <h4 style="color: grey;">${productData.category}</h4>
-                            <p>${productData.description}</p>
-                            </br>
-                            </br>
-                            <div class="precioImgView">
-                    <p style="font-size:25px"><strong>${productData.currency} ${productData.cost}</strong></p>
-                    </br>
-                    </br>
-                    <p><strong>Vendidos:</strong> ${productData.soldCount}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="containerCarrusel">
-                <div class="containerRelacionados" id="relacionados"></div>
-              </div>
-              
-              `;
-            console.log(productID);
-          } else {
-            document.getElementById("product-info").innerHTML = "<p>No se encontró el producto</p>";
-          }
-          }
-
-          const relacionados = document.getElementById("relacionados");
-
-        for (let i = 0; i < localStorage.length; i++ ) {
-          const key = localStorage.key(i);
-          if (key.startsWith("id_")) {
-            const prod = JSON.parse(localStorage.getItem(key));
-            if (prod.id != productID) {
-              const item = document.createElement("div");
-              item.classList.add("relacionados");
-
-              item.innerHTML = `
-                <img class="imgRelacionadosDOM" src="${prod.image}" alt="${prod.name}">
-              `;
-
-              relacionados.appendChild(item);
-            }
-            
-            console.log(key);
-          }
-        }
-        })
-        };
-
-      })
-    </script>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
-</body>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
+  </body>
 </html>
-

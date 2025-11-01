@@ -158,11 +158,16 @@ footer p {
 }
 
 .signin {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
-}
+  margin:auto;
+  margin-top: 200px;
+  margin-bottom: 285px;
+} 
+
 
 #spinner-wrapper {
   position: fixed;
@@ -189,150 +194,94 @@ a.custom-card:hover {
   color: orange;
 }
 
-
-.rows {
-  background-color: #0087F7;
-  display: grid;
-  padding-left: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+.vendidos{
+  color: #24282c;
 }
 
-.rows span {
-  padding: 20px;
+#e{
+  color: orange;
+}
+
+#form label{
   color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 2ch;
-  display: grid;
-  align-items: left;
-}
-
-.table {
-  margin: 10px;
-  display: grid; /* Habilita el contexto de cuadrícula */
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 3 columnas de igual tamaño */
-  gap: 10px; /* Espacio entre los elementos */
-}
-
-.table:nth-child(odd){
-  background-color: rgb(247, 246, 246);
-}
-
-.item {
-  display: grid;
-  place-items: left;
-  padding: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 1.8ch;
-  text-align: left;
-}
-
-.tableImg {
-  padding: 5px;
-  width: 180px;
-}
-
-.header {
-  padding: 20px;
-  color: lightskyblue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 3ch;
-  display: grid;
-  justify-content: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
+#logout{
+  margin-left: 50px;
+ }
 
-.containerGrid {
-  padding: 10px;
-  display: flex;
-  justify-content: center;
+
+#form input{
+  opacity: 0.3;
+  width: 300px;
+  border: solid 1px black;
+  border-radius: 8px;
+ }
+ 
+ #enviar {
+  max-width: 100px;
+ }
+ 
+.star {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.containerCarrusel {
-  padding: 5px;
-  display: flex;
-  justify-content: center;
+.star.active {
+    color: #ffd700;
 }
 
-.square {
-  margin: 10px;
-  display: block;
-  height: auto;
-  width: 240px;
+.comment-card {
+    border: 1px solid #ddd;       
+    border-radius: 5px;         
+    padding: 10px;               
+    margin-bottom: 10px; 
+    background-color: #f9f9f9;    
 }
 
-
-.containerRelacionados {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow-x: scroll;
-  width: auto;
-  height: 220px;
-  scroll-behavior: smooth;
-  border: none;
-  text-decoration: none;
-  margin: 10px;
+.comment-card strong {
+    font-size: 1rem;
 }
 
-.containerRelacionados::-webkit-scrollbar {
-  display: none;
+.comment-card small {
+    color: #888;
 }
 
-.imgRelacionadosDOM {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 20px;
-  width: auto;
-  height: 180px;
+.comment-card p {
+    margin: 5px 0 0 0;
 }
 
-.carrusel {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  border: none;
-  margin: 20px;
-  height: 220px;
+body {
+  background-color: white;
+  color: black;
 }
 
-.expandedView {
-  margin: 10px;
-  height: auto;
-  width: 750px;
-}
-
-.imgExpanded {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  justify-content: center;
-}
-
-.descriptionImgView {
+body.dark-mode {
+  background-color: #121212;
   color: white;
-  padding: 20px;
 }
 
-.precioImgView {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+body.dark-mode .comment-card ,.dark-mode .card,.dark-mode .form-control,.dark-mode .articles, .dark-mode .list-group-item{
+  background-color: #2c2c2c; 
+  color: #f1f1f1;     
+  
 }
 
-.infoImg {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 20px;
-  margin: 10px;
-  width: 400px;
-  height: auto;
-  background-color: aliceblue;
+
+
+.imagen-cuadrada {
+  width: 400px;       
+  height: 400px;
+  object-fit: cover;    
+  border-radius: 8px;  
+}
+
+#totales{
+  margin-top: auto;
 }
