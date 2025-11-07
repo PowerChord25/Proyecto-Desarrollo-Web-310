@@ -8,13 +8,13 @@
     />
     <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
@@ -46,12 +46,19 @@
               <li class="nav-item">
                 <a class="nav-link" href="sell.html">Vender</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="my-profile.html" id="usuario"></a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="usuario" role="button"></a>
+                <div class="dropdown-menu dropdown-menu-end" id="userDropdown">
+                  <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                  <a onclick="logOut()" class="dropdown-item" href="#" id="logout-btn">Cerrar sesión</a>
+                </div>
+          </li>
+               <li class="nav-item position-relative">
+                <a class="nav-link" href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="carritoCantidad" class="position-absolute rounded-pill start-100 translate-middle badge bg-danger text-white"></span>
+                </a>
+          </li>
             </ul>
           </div>
         </div>
@@ -62,47 +69,17 @@
         <div id="titulo"></div>
         <div id="filtros">
           <div class="row m-3">
-            <button
-              class="btn btn-sm btn-light text-dark col-2"
-              onclick="window.location.href='categories.html'"
-            >
-              ← Volver al listado
-            </button>
+            <button class="btn btn-sm btn-light col-2 text-dark btn-custom" onclick="window.location.href='categories.html'">← Volver al listado</button>
           </div>
           <div class="row">
             <div class="col text-end">
-              <div
-                class="btn-group btn-group-toggle mb-4"
-                data-bs-toggle="buttons"
-              >
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="options"
-                  id="sortAsc"
-                />
-                <label class="btn btn-light" for="sortAsc"
-                  >$<i class="fas fa-sort-amount-up mr-1"></i
-                ></label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="options"
-                  id="sortDesc"
-                />
-                <label class="btn btn-light" for="sortDesc"
-                  >$<i class="fas fa-sort-amount-down mr-1"></i
-                ></label>
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="options"
-                  id="sortByRel"
-                  checked
-                />
-                <label class="btn btn-light" for="sortByRel"
-                  >Rel<i class="fas fa-sort-amount-down mr-1"></i
-                ></label>
+              <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+                <input type="radio" class="btn-check" name="options" id="sortAsc"/>
+                <label class="btn btn-light" for="sortAsc">$<i class="fas fa-sort-amount-up mr-1"></i></label>
+                <input type="radio" class="btn-check" name="options" id="sortDesc"/>
+                <label class="btn btn-light" for="sortDesc">$<i class="fas fa-sort-amount-down mr-1"></i></label>
+                <input type="radio" class="btn-check" name="options" id="sortByRel" checked/>
+                <label class="btn btn-light" for="sortByRel">Rel<i class="fas fa-sort-amount-down mr-1"></i></label>
               </div>
             </div>
             <div class="col-md-4 text-start">
@@ -117,35 +94,18 @@
             <div class="col-lg-6 col-md-12 mb-1 container">
               <div class="row container p-0 m-0">
                 <div class="col">
-                  <p class="font-weight-normal text-end my-2">Precio</p>
+                  <p id="precio" class="font-weight-normal text-end my-2">Precio</p>
                 </div>
                 <div class="col">
-                  <input
-                    class="form-control"
-                    type="number"
-                    placeholder="min."
-                    id="rangeFilterPriceMin"
-                  />
+                  <input class="form-control" type="number" placeholder="min." id="rangeFilterPriceMin"/>
                 </div>
                 <div class="col">
-                  <input
-                    class="form-control"
-                    type="number"
-                    placeholder="máx."
-                    id="rangeFilterPriceMax"
-                  />
+                  <input class="form-control" type="number" placeholder="máx." id="rangeFilterPriceMax"/>
                 </div>
                 <div class="col-3 p-0">
                   <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-light btn-block"
-                      id="rangeFilterCount"
-                    >
-                      Filtrar
-                    </button>
-                    <button class="btn btn-link btn-sm" id="clearRangeFilter">
-                      Limpiar
-                    </button>
+                    <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                    <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
                   </div>
                 </div>
               </div>
@@ -179,5 +139,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

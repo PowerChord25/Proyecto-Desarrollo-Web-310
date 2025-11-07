@@ -15,6 +15,10 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -45,12 +49,19 @@
             <li class="nav-item">
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="my-profile.html" id="usuario"></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="usuario" role="button"></a>
+                <div class="dropdown-menu dropdown-menu-end" id="userDropdown">
+                  <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                  <a onclick="logOut()" class="dropdown-item" href="#" id="logout-btn">Cerrar sesión</a>
+                </div>
+          </li>
+            <li class="nav-item position-relative">
+                <a class="nav-link" href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="carritoCantidad" class="position-absolute rounded-pill start-100 translate-middle badge bg-danger text-white"></span>
+                </a>
+          </li>
           </ul>
         </div>
       </div>
@@ -59,24 +70,18 @@
       <br /><br /><br />
       <div class="container">
         <div class="row border rounded border-2">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <button
-              class="btn btn-sm btn-light text-dark m-3"
-              onclick="window.location.href='products.html'"
-            >
-              ← Volver al listado
-            </button>
-
-            <button class="btn btn-light m-3">Añadir favoritos ❤</button>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <button class="btn btn-sm btn-light text-dark btn-custom" onclick="window.location.href='products.html'">← Volver al listado</button>
+            <button class="btn btn-light text-danger btn-custom btn-fav">❤ Añadir favoritos</button>
           </div>
           <div class="col-6 p-5" id="imagen-producto"></div>
           <div class="col-6" id="info-producto"></div>
 
           <div id="calificaciones">
-            <h3>Añade tu comentario:</h3>
+            <h3 style="color: black;">Añade tu comentario:</h3>
 
             <div class="mb-3">
-              <label>Tu calificación:</label>
+              <label style="color: black;">Tu calificación:</label>
               <div id="stars">
                 <i class="fas fa-star star" onclick="rate(1)"></i>
                 <i class="fas fa-star star" onclick="rate(2)"></i>
@@ -84,13 +89,10 @@
                 <i class="fas fa-star star" onclick="rate(4)"></i>
                 <i class="fas fa-star star" onclick="rate(5)"></i>
               </div>
-              <small>Selecciona tu calificación</small>
+              <small style="color: black;">Selecciona tu calificación</small>
             </div>
 
-            <div
-              class="form-control d-flex flex-column gap-3"
-              id="form-calificacion"
-            >
+            <div class="form-control d-flex flex-column gap-3 " id="form-calificacion">
               <textarea
                 id="commentText"
                 placeholder="Escribe tu comentario..."
@@ -143,5 +145,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/product-info.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin3.min.js"></script>
   </body>
 </html>

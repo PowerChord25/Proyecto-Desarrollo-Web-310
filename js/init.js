@@ -79,3 +79,44 @@ if (!localStorage.getItem("username")){
     setupThemeSwitch();
 
 })
+
+const usuario = document.getElementById("usuario");
+const dropdown = document.getElementById("userDropdown");
+const logoutBtn = document.getElementById("logout-btn");
+
+usuario.addEventListener("click", (e) => {
+  e.preventDefault();
+  dropdown.classList.toggle("show");
+});
+
+document.addEventListener("click", (e) => {
+  if (!usuario.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.classList.remove("show");
+  }
+});
+
+function logOut() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Sesión cerrada',
+        text: 'Su sesión ha sido cerrada con éxito.',
+        confirmButtonText: 'Aceptar',
+    }).then(() => {
+        localStorage.removeItem("username");
+        window.location.href = "login.html";
+    });
+}
+
+function actualizarCantidadCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let cantidadCarrito = 0;
+    carrito.forEach(item => {
+        cantidadCarrito += item.cantidad;
+    });
+    const carritoCantidadElemento = document.getElementById("carritoCantidad");
+    carritoCantidadElemento.textContent = cantidadCarrito;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    actualizarCantidadCarrito();
+});
